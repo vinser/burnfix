@@ -1,1 +1,1 @@
-![appIcon](../assets/screen.png)
+![appIcon](screen.png)
