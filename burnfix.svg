@@ -1,8 +1,15 @@
 <svg width="96" height="96" xmlns="http://www.w3.org/2000/svg">
- <g id="Layer_1">
-  <title>Layer 1</title>
-  <rect id="svg_1" height="28" width="84" y="6"  x="6" stroke-width="0" stroke="#000" fill="#e5e5e5"/>
+  <defs>
+    <linearGradient id="lG1"
+                    x1="0%" x2="100%"
+                    y1="0%"   y2="0%"
+                    spreadMethod="pad"
+    >
+      <stop offset="0%"   stop-color="#000000" stop-opacity="1"/>
+      <stop offset="80%" stop-color="#ffffff" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect id="svg_1" height="28" width="84" y="6"  x="6" stroke-width="0" stroke="#000" fill="url(#lG1)"/>
   <rect id="svg_2" height="28" width="84" y="34" x="6" stroke-width="0" stroke="#000" fill="#ff0000"/>
   <rect id="svg_3" height="28" width="84" y="62" x="6" stroke-width="0" stroke="#000" fill="#00ff00"/>
- </g>
 </svg>
