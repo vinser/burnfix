@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"image/color"
 	"time"
 
@@ -12,8 +13,13 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+//go:embed burnfix.svg
+var iconData []byte
+var appIcon = &fyne.StaticResource{StaticName: "burnfix.svg", StaticContent: iconData}
+
 func main() {
 	a := app.New()
+	a.SetIcon(appIcon)
 	a.Settings().SetTheme(&Theme{})
 	w := a.NewWindow("Burn Fix")
 	w.CenterOnScreen()
@@ -291,20 +297,6 @@ SOFTWARE.
 	<-cancelCh
 }
 
-var appIcon = &fyne.StaticResource{
-	StaticName: "burnfix.svg",
-	StaticContent: []byte(`
-	<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg">
- <g id="Layer_1">
-  <title>Layer 1</title>
-  <rect id="svg_1" height="28" width="84" y="6"  x="6" stroke-width="0" stroke="#000" fill="#e5e5e5"/>
-  <rect id="svg_2" height="28" width="84" y="34" x="6" stroke-width="0" stroke="#000" fill="#ff0000"/>
-  <rect id="svg_3" height="28" width="84" y="62" x="6" stroke-width="0" stroke="#000" fill="#00ff00"/>
- </g>
-</svg>
-`),
-}
-
 // Application custom theme and interface inplementation
 type Theme struct{}
 
@@ -312,8 +304,6 @@ func (t *Theme) Color(name fyne.ThemeColorName, _ fyne.ThemeVariant) color.Color
 	switch {
 	case name == theme.ColorNameButton:
 		return color.Transparent
-		// case name == theme.ColorNameForeground:
-		// 	return colorOf(red)
 	}
 	return theme.DefaultTheme().Color(name, theme.VariantDark)
 }
