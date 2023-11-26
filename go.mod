@@ -1,8 +1,8 @@
 module gitgub.com/vinser/burnfix
 
-go 1.21.4
+go 1.20
 
-require fyne.io/fyne/v2 v2.4.2
+require fyne.io/fyne/v2 v2.4.1
 
 require (
 	fyne.io/systray v1.10.1-0.20231115130155-104f5ef7839e // indirect
