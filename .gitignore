@@ -1,0 +1,13 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+burnfix
+
+# Output when building the Flatpak package. 
+.flatpak-builder
+build-dir
+fyne-cross
+
