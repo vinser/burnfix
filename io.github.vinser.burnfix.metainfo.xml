@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>com.github.vinser.burnfix</id>
+  <id>io.github.vinser.burnfix</id>
   
   <name>burnfix</name>
   <developer_name>Serguei Vine</developer_name>
@@ -36,7 +36,7 @@
     <p>Moreover, with this application, you can identify defects in the display matrix by viewing full-screen solid images of different colors.</p>
   </description>
   
-  <launchable type="desktop-id">com.github.vinser.burnfix.desktop</launchable>
+  <launchable type="desktop-id">io.github.vinser.burnfix.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/vinser/burnfix/master/docs/Screenshot1.png</image>

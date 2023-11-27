@@ -1,4 +1,4 @@
-app-id: com.github.vinser.burnfix
+app-id: io.github.vinser.burnfix
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
@@ -11,12 +11,6 @@ finish-args:
     - --socket=x11
     - --device=dri # OpenGL rendering support.
 
-    # Needed to support desktop notifications.
-    # - --talk-name=org.freedesktop.Notifications
-
-    # Allowing access to the home directory.
-    - --filesystem=home
-
 build-options:
   env:
     - GOBIN=/app/bin
@@ -28,13 +22,16 @@ modules:
     build-commands:
       - $GOROOT/bin/go build -trimpath -o burnfix
       - install -Dm00755 burnfix $FLATPAK_DEST/bin/burnfix
-      - install -Dm00644 burnfix.svg $FLATPAK_DEST/share/icons/hicolor/96x96/apps/$FLATPAK_ID.svg
+      - install -Dm00644 burnfix.svg $FLATPAK_DEST/share/icons/hicolor/scalable/apps/$FLATPAK_ID.svg
       - install -Dm00644 $FLATPAK_ID.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
-      - install -Dm00644 $FLATPAK_ID.metainfo.xml $FLATPAK_DEST/share/appdata/$FLATPAK_ID.metainfo.xml
+      - install -Dm00644 $FLATPAK_ID.metainfo.xml $FLATPAK_DEST/share/metainfo/$FLATPAK_ID.metainfo.xml
     sources:
       - type: file
-        path: com.github.vinser.burnfix.metainfo.xml
+        path: io.github.vinser.burnfix.metainfo.xml
       - type: file
-        path: com.github.vinser.burnfix.desktop
+        path: io.github.vinser.burnfix.desktop
       - type: dir
         path: ./
+#      - type: archive
+#        url: "https://github.com/vinser/burnfix/archive/refs/tags/v1.0.0.tar.gz"
+#        sha256: "70dddc719565c7b61c20d948c23faacdb2f39a5d8bc15619f9f6f030a371ca6d"

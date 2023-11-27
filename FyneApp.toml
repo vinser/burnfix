@@ -1,7 +1,7 @@
 [Details]
   Icon = "burnfix.svg"
   Name = "Burn Fix"
-  ID = "com.github.vinser.burnfix"
+  ID = "io.github.vinser.burnfix"
   Version = "1.0.0"
   Build = 0
 
