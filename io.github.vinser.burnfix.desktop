@@ -3,7 +3,7 @@ Type=Application
 
 Name=burnfix
 Comment=Try to fix screen retentions and burn in, look for screen defects
-Categories=Education;Literature;
+Categories=Utility;Electronics;
 
 Icon=io.github.vinser.burnfix
 Exec=burnfix

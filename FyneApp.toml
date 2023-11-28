@@ -2,7 +2,7 @@
   Icon = "burnfix.svg"
   Name = "Burn Fix"
   ID = "io.github.vinser.burnfix"
-  Version = "1.0.0"
+  Version = "1.0.1"
   Build = 0
 
 [LinuxAndBSD]
