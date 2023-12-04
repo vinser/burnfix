@@ -1,12 +1,5 @@
 [Details]
-  Icon = "burnfix.svg"
-  Name = "Burn Fix"
+  Icon = "burnfix.png"
+  Name = "Burnfix"
   ID = "io.github.vinser.burnfix"
-  Version = "1.0.1"
-  Build = 0
-
-[LinuxAndBSD]
-  GenericName = "Burn Fix"
-  Categories = ["Accessory"]
-  Comment = "Fix LCD and LED retensions and burn-in, look for bad pixels"
-  Keywords = ["burn-in", "retension", "monitor", "TV", "display"]
+  Version = "1.1.0"
