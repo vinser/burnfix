@@ -16,15 +16,15 @@ import (
 //go:embed burnfix.svg
 var iconData []byte
 var appIcon = &fyne.StaticResource{StaticName: "burnfix.svg", StaticContent: iconData}
+var infoSize float32
 
 func main() {
 	a := app.New()
 	a.SetIcon(appIcon)
 	a.Settings().SetTheme(&Theme{})
+	infoSize = a.Settings().Theme().Size("text") * 3
 	w := a.NewWindow("Burn Fix")
-	w.CenterOnScreen()
-	w.SetPadded(false)
-	w.SetMaster()
+
 	buttonsRow := container.NewGridWithRows(3,
 		newButtonWithGradient("Clear retensions", colorOf(black), colorOf(white), func() {
 			go clearRetensions(a)
@@ -37,6 +37,10 @@ func main() {
 		}),
 	)
 	w.SetContent(buttonsRow)
+	w.Resize(fyne.NewSize(480, 240))
+	w.CenterOnScreen()
+	w.SetPadded(false)
+	w.SetMaster()
 	w.SetFixedSize(true)
 	w.Show()
 
@@ -57,7 +61,7 @@ const (
 	red
 	green
 	blue
-	grey
+	gray
 )
 
 func colorOf(c Color) color.Color {
@@ -72,7 +76,7 @@ func colorOf(c Color) color.Color {
 		return color.NRGBA{R: 0, G: 255, B: 0, A: 255}
 	case blue:
 		return color.NRGBA{R: 0, G: 0, B: 255, A: 255}
-	case grey:
+	case gray:
 		return color.NRGBA{R: 128, G: 128, B: 128, A: 255}
 	}
 	return color.White
@@ -121,7 +125,7 @@ func clearRetensions(a fyne.App) {
 	}
 	msgText := `Clearing Retentions... Press Esc to cancel`
 	msg := canvas.NewText(msgText, colorOf(green))
-	msg.TextSize = fyne.CurrentApp().Settings().Theme().Size("text") * 3
+	msg.TextSize = infoSize
 	content.Add(msg)
 	msgAnm := canvas.NewPositionAnimation(fyne.NewPos(winW, winH/2), fyne.NewPos(-msg.MinSize().Width, winH/2), 10*time.Second, msg.Move)
 	msgAnm.Curve = fyne.AnimationEaseOut
@@ -159,7 +163,7 @@ func solidColor(a fyne.App) {
 		{fg: colorOf(white), bg: colorOf(blue)},
 		{fg: colorOf(black), bg: colorOf(white)},
 		{fg: colorOf(white), bg: colorOf(black)},
-		{fg: colorOf(white), bg: colorOf(grey)},
+		{fg: colorOf(white), bg: colorOf(gray)},
 	}
 
 	iColor := 0
@@ -169,7 +173,7 @@ func solidColor(a fyne.App) {
 
 	msgText := `Look for bad pixels... Press Space to change color or Esc to cancel`
 	msg := canvas.NewText(msgText, palette[iColor].fg)
-	msg.TextSize = fyne.CurrentApp().Settings().Theme().Size("text") * 3
+	msg.TextSize = infoSize
 	content.Add(msg)
 	msgAnm := canvas.NewPositionAnimation(fyne.NewPos(winW, winH/2), fyne.NewPos(-msg.MinSize().Width, winH/2), 10*time.Second, msg.Move)
 	msgAnm.Curve = fyne.AnimationEaseOut
@@ -211,18 +215,13 @@ func about(a fyne.App) {
 	aboutRow := widget.NewRichTextFromMarkdown(`
 # burnfix
 
-After turning off or moving the taskbar in Windows, you suddenly discover that the window corner logo
-and the search magnifying glass are still visible on the screen of your monitor or TV, albeit not so brightly.
+After turning off or moving the taskbar, you suddenly find that the logo in the corner of the screen and the search magnifier are still visible on your monitor or TV screen, although not as brightly.
 
 This is the so-called **image retention** or **burn in**.  
 
-Once a similar effect was manifested on plasma panels, but as it turned out, LCD and LED displays can also be affected by it.
-In some cases, such changes are irreversible, especially when a static image is displayed continuously for many days.
-But you can try to get rid of this effect by showing a special pattern on the screen.
-This pattern was built into my old Samsung plasma TV more than 10 years ago.
-Therefore, having discovered this effect on my modern 4K IPS monitor, I decided to code this simple application that might help you too.  
+This application can attempt to get rid of this effect on your LCD, LED or plasma screen by showing a special moving Signal Pattern for a period of time. Similar Signal Pattern was used to remove after images on Samsung Plasma Display Panels and they clamed it to be more effective then All White signal.
 
-In addition, using this application you can identify defects of display matrix by looking at solid images in different colors.  
+Moreover, burnfix can show full-screen images of various colors to help you identify defects in the display matrix.
 
 Enjoy!
 `)
@@ -279,7 +278,7 @@ SOFTWARE.
 
 	msgText := `Press Esc to close`
 	msg := canvas.NewText(msgText, colorOf(green))
-	msg.TextSize = fyne.CurrentApp().Settings().Theme().Size("text") * 3
+	msg.TextSize = infoSize
 	content.Add(msg)
 	msgAnm := canvas.NewPositionAnimation(fyne.NewPos(winW, winH/2), fyne.NewPos(-msg.MinSize().Width, winH/2), 10*time.Second, msg.Move)
 	msgAnm.Curve = fyne.AnimationEaseOut
@@ -321,5 +320,5 @@ func (t *Theme) Size(name fyne.ThemeSizeName) float32 {
 	case theme.SizeNamePadding, theme.SizeNameInputRadius:
 		return 0
 	}
-	return theme.DefaultTheme().Size(name) * 1.5
+	return theme.DefaultTheme().Size(name) * 2.5
 }
