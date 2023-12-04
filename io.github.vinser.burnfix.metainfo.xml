@@ -39,11 +39,15 @@
   <launchable type="desktop-id">io.github.vinser.burnfix.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/vinser/burnfix/v1.0.1/docs/Screenshot1.png</image>
+      <image>https://raw.githubusercontent.com/vinser/burnfix/v1.0.1/docs/Scr1Main.png</image>
+      <caption>Main screen</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/vinser/burnfix/v1.0.1/docs/Scr2Clearing.png</image>
       <caption>Clear image retentions</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/vinser/burnfix/v1.0.1/docs/Screenshot2.png</image>
+      <image>https://raw.githubusercontent.com/vinser/burnfix/v1.0.1/docs/Scr3Solid.png</image>
       <caption>Look for defects</caption>
     </screenshot>
   </screenshots>
@@ -54,6 +58,12 @@
   <content_rating type="oars-1.1" />  
   
   <releases>
+    <release version="1.1.0" date="2023-12-03" type="stable">
+      <description>
+        <p>Cross platform builds and some minor fixes</p>
+      </description>
+      <url type="details">https://github.com/vinser/vinser/releases/tag/v1.0.2</url>
+    </release>
     <release version="1.0.1" date="2023-11-28" type="stable">
       <description>
         <p>Fix to comply flathub review</p>
