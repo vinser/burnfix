@@ -1,0 +1,43 @@
+#   MakefileX - will be included in Makefile at runtime
+#
+#   Cross-builds:
+
+xbuild: xdarwin xlinux xwindows ##    - All cross-builds 
+
+xdarwin: xdarwin_amd64 xdarwin_arm64 ##   - Mac OS X desktops
+
+xdarwin_amd64:
+	$(call xbuild_cmd,darwin,amd64) -macosx-sdk-path=$(HOME)/SDKs/MacOSX11.3.sdk
+	cd ./fyne-cross/dist/darwin-amd64 && zip -r $(shell pwd)/fyne-cross/$(APP_LOWERCASE)-v$(SEMANTIC_VERSION)-macOS-amd64.zip .
+
+xdarwin_arm64:
+	$(call xbuild_cmd,darwin,arm64) -macosx-sdk-path=$(HOME)/SDKs/MacOSX11.3.sdk
+	cd ./fyne-cross/dist/darwin-arm64 && zip -r $(shell pwd)/fyne-cross/$(APP_LOWERCASE)-v$(SEMANTIC_VERSION)-macOS-arm64.zip .
+
+xlinux: xlinux_amd64 xlinux_arm64 xlinux_arm ##    - Linux desktops and SBCs
+
+xlinux_amd64:
+	$(call xbuild_cmd,linux,amd64)
+	cp fyne-cross/dist/linux-amd64/$(APP_NAME).tar.xz fyne-cross/$(APP_LOWERCASE)-v$(SEMANTIC_VERSION)-linux-amd64.tar.xz
+
+xlinux_arm64:
+	$(call xbuild_cmd,linux,arm64)
+	cp fyne-cross/dist/linux-arm64/$(APP_NAME).tar.xz fyne-cross/$(APP_LOWERCASE)-v$(SEMANTIC_VERSION)-linux-arm64.tar.xz
+
+xlinux_arm:
+	$(call xbuild_cmd,linux,arm)
+	cp fyne-cross/dist/linux-arm/$(APP_NAME).tar.xz fyne-cross/$(APP_LOWERCASE)-v$(SEMANTIC_VERSION)-linux-arm.tar.xz
+
+xwindows: xwindows_amd64 ##  - Windows desktops
+
+xwindows_amd64:
+	$(call xbuild_cmd,windows,amd64)
+	cp fyne-cross/dist/windows-amd64/$(APP_NAME).exe.zip fyne-cross/$(APP_LOWERCASE)-v$(SEMANTIC_VERSION)-windows-amd64.exe.zip
+
+xsdk: ##      - Extract SDK from Apple Command Line Tools for Xcode 
+##              only version Xcode_12.5.1 was tested 
+##              https://developer.apple.com/download/all/?q=Command%20Line%20Tools
+	sudo rm -rf $(HOME)/SDKs
+	sudo $(HOME)/go/bin/fyne-cross darwin-sdk-extract -pull -xcode-path $(HOME)/Command_Line_Tools_for_Xcode_12.5.1.dmg
+
+.PHONY: xbuild xdarwin xlinux xwindows xsdk xdarwin_amd64 xdarwin_arm64 xlinux_amd64 xlinux_arm64 xlinux_arm xwindows_amd64
