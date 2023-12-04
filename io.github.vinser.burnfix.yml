@@ -20,7 +20,7 @@ modules:
   - name: burnfix
     buildsystem: simple
     build-commands:
-      - $GOROOT/bin/go build -trimpath -o burnfix
+      - $GOROOT/bin/go build -o burnfix -trimpath -buildvcs=false -ldflags="-s -w"
       - install -Dm00755 burnfix $FLATPAK_DEST/bin/burnfix
       - install -Dm00644 burnfix.svg $FLATPAK_DEST/share/icons/hicolor/scalable/apps/$FLATPAK_ID.svg
       - install -Dm00644 $FLATPAK_ID.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
@@ -32,6 +32,6 @@ modules:
         path: io.github.vinser.burnfix.desktop
       - type: dir
         path: ./
-#      - type: archive
-#        url: "https://github.com/vinser/burnfix/archive/refs/tags/v1.0.0.tar.gz"
-#        sha256: "70dddc719565c7b61c20d948c23faacdb2f39a5d8bc15619f9f6f030a371ca6d"
+    #  - type: archive
+    #    url: "https://github.com/vinser/burnfix/archive/refs/tags/v1.1.0.tar.gz"
+    #    sha256: "32fbfa23ead8c842acf93b20699d2906280e877d4cff65f3a5412963fdb6e2a0"
