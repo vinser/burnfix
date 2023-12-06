@@ -1,4 +1,4 @@
-![appIcon](../burnfix.svg)
+![appIcon](../burnfix.png)
 
 
 **Try to fix screen image retentions and burn in, look for screen defects**

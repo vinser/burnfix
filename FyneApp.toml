@@ -3,3 +3,4 @@
   Name = "Burnfix"
   ID = "io.github.vinser.burnfix"
   Version = "1.1.0"
+  Build = 1
