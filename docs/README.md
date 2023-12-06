@@ -1,4 +1,4 @@
-![appIcon](../burnfix.png)
+![appIcon](https://raw.githubusercontent.com/vinser/burnfix/v1.1.0/burnfix.svg)
 
 
 **Try to fix screen image retentions and burn in, look for screen defects**
