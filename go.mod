@@ -1,4 +1,4 @@
-module gitgub.com/vinser/burnfix
+module github.com/vinser/burnfix
 
 go 1.20
 
