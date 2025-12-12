@@ -1,0 +1,31 @@
+app-id: io.github.vinser.burnfix
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+    - org.freedesktop.Sdk.Extension.golang
+command: burnfix
+
+finish-args:
+    - --share=ipc 
+    - --socket=x11
+    - --device=dri
+     
+build-options:
+  env:
+    - GOBIN=/app/bin
+    - GOROOT=/usr/lib/sdk/golang
+
+modules:
+  - name: burnfix
+    buildsystem: simple
+    build-commands:
+      - $GOROOT/bin/go build -o burnfix -trimpath -buildvcs=false -ldflags="-s -w"
+      - install -Dm00755 burnfix $FLATPAK_DEST/bin/burnfix
+      - install -Dm00644 burnfix.svg $FLATPAK_DEST/share/icons/hicolor/scalable/apps/$FLATPAK_ID.svg
+      - install -Dm00644 $FLATPAK_ID.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
+      - install -Dm00644 $FLATPAK_ID.metainfo.xml $FLATPAK_DEST/share/metainfo/$FLATPAK_ID.metainfo.xml
+    sources:
+      - type: archive
+        url: "https://github.com/vinser/burnfix/archive/refs/tags/v.tar.gz"
+        sha256: 1d0816f99f46649f8be48337fad7923eb1d841ec3f670e1511c07a13f3676521

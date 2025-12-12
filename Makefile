@@ -16,7 +16,7 @@ HOSTOS := $(shell go env GOHOSTOS)
 HOSTARCH := $(shell go env GOHOSTARCH)
 
 ifeq ($(HOSTOS),linux)
-SEMANTIC_VERSION = $(shell sh/app-semver.sh)
+SEMANTIC_VERSION = $(shell sh $(PROJECT_DIR)/sh/app-semver.sh)
 
 xbuild_cmd = \
 $(HOME)/go/bin/fyne-cross \

@@ -40,4 +40,10 @@ xsdk: ##      - Extract SDK from Apple Command Line Tools for Xcode
 	sudo rm -rf $(HOME)/SDKs
 	sudo $(HOME)/go/bin/fyne-cross darwin-sdk-extract -pull -xcode-path $(HOME)/Command_Line_Tools_for_Xcode_12.5.1.dmg
 
-.PHONY: xbuild xdarwin xlinux xwindows xsdk xdarwin_amd64 xdarwin_arm64 xlinux_amd64 xlinux_arm64 xlinux_arm xwindows_amd64
+tag = v1.1.0
+url = https://github.com/vinser/burnfix/archive/refs/tags/$(tag).tar.gz
+
+sha256:
+	curl -L "$(url)" | sha256sum
+
+.PHONY: xbuild xdarwin xlinux xwindows xsdk xdarwin_amd64 xdarwin_arm64 xlinux_amd64 xlinux_arm64 xlinux_arm xwindows_amd64 sha256
