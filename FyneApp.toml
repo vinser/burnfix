@@ -2,5 +2,5 @@
   Icon = "burnfix.png"
   Name = "Burnfix"
   ID = "io.github.vinser.burnfix"
-  Version = "1.1.0"
+  Version = "1.1.1"
   Build = 1
